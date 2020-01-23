@@ -73,6 +73,8 @@ class F1Score(tf.keras.metrics.Metric):
     def result(self):
         p_res, r_res = self.p.result(), self.r.result()
         return (2 * p_res * r_res) / (p_res + r_res)
+    
+    
 # this function creates a normalized vector for the whole sentence
 def sent2vec(s):
     words = str(s).lower()#.decode('utf-8')
@@ -91,11 +93,12 @@ def sent2vec(s):
         return np.zeros(300)
     return v / np.sqrt((v ** 2).sum())
 
+
 # Create a SentimentIntensityAnalyzer object.
 sid_obj = SentimentIntensityAnalyzer()
-
+# pour ne pas avoir a recalculer le modele de word embedding a chaque fois
 flag_save_word2vec = False
-
+# on recupere les donnees
 train_valid_df = pd.read_csv("nlp-getting-started/train.csv")
 test_df = pd.read_csv("nlp-getting-started/test.csv")
 

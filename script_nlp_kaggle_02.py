@@ -97,9 +97,9 @@ def sent2vec(s):
 
 # Create a SentimentIntensityAnalyzer object.
 sid_obj = SentimentIntensityAnalyzer()
-
+# pour ne pas avoir a recalculer le modele de word embedding a chaque fois
 flag_save_word2vec = False
-
+# on recupere les donnees
 train_valid_df = pd.read_csv("nlp-getting-started/train.csv")
 test_df = pd.read_csv("nlp-getting-started/test.csv")
 
@@ -151,7 +151,7 @@ xtest_scl = scl.fit_transform(xtest_word2vec)
 
 # we need to binarize the labels for the neural net
 ytrain_enc = np_utils.to_categorical(train_valid_df["target"])
-
+# tokenization
 embedding_dim = 300
 trunc_type = 'post'
 padding_type = 'post'
