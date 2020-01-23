@@ -22,7 +22,7 @@ from keras.layers.normalization import BatchNormalization
 from sklearn import feature_extraction, linear_model, model_selection, preprocessing
 from tqdm import tqdm
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-  
+
 stop_words = stopwords.words('english')
 
 def plot_graphs(history, string):
@@ -96,8 +96,8 @@ sid_obj = SentimentIntensityAnalyzer()
 
 flag_save_word2vec = False
 
-train_valid_df = pd.read_csv("../nlp-getting-started/train.csv")
-test_df = pd.read_csv("../nlp-getting-started/test.csv")
+train_valid_df = pd.read_csv("nlp-getting-started/train.csv")
+test_df = pd.read_csv("nlp-getting-started/test.csv")
 
 #----------------- Premiere tentative----------------------------
 #----------------------------------------------------------------

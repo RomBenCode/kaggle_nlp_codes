@@ -100,8 +100,8 @@ sid_obj = SentimentIntensityAnalyzer()
 
 flag_save_word2vec = False
 
-train_valid_df = pd.read_csv("../nlp-getting-started/train.csv")
-test_df = pd.read_csv("../nlp-getting-started/test.csv")
+train_valid_df = pd.read_csv("nlp-getting-started/train.csv")
+test_df = pd.read_csv("nlp-getting-started/test.csv")
 
 # on calcule des composantes de sentiments via vader nlp
 list_vader_train_valid = []
