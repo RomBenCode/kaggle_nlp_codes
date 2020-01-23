@@ -155,8 +155,8 @@ max_len = 70
 xtrain_seq = tokenizer.texts_to_sequences(train_valid_df["text"])
 xtest_seq = tokenizer.texts_to_sequences(test_df["text"])
 # zero pad the sequences
-xtrain_pad = sequence.pad_sequences(xtrain_seq, maxlen=max_len)
-xtest_pad = sequence.pad_sequences(xtest_seq, maxlen=max_len)
+xtrain_pad = sequence.pad_sequences(xtrain_seq, maxlen=max_len, padding=padding_type, truncating=trunc_type)
+xtest_pad = sequence.pad_sequences(xtest_seq, maxlen=max_len, padding=padding_type, truncating=trunc_type)
 
 # create an embedding matrix for the words we have in the dataset
 embedding_matrix = np.zeros((len(word_index) + 1, embedding_dim))
