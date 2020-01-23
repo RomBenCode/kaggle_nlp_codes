@@ -22,7 +22,7 @@ from keras.layers.normalization import BatchNormalization
 from sklearn import feature_extraction, linear_model, model_selection, preprocessing
 from tqdm import tqdm
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-
+  
 stop_words = stopwords.words('english')
 
 def plot_graphs(history, string):
