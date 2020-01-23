@@ -105,7 +105,6 @@ test_df = pd.read_csv("nlp-getting-started/test.csv")
 #----------------- Premiere tentative----------------------------
 #----------------------------------------------------------------
 sentance = [list(tokenize(s, deacc=True, lower=True)) for s in train_valid_df['text']]
-print(sentance[1])
 
 if flag_save_word2vec:
     model = word2vec.Word2Vec(sentance, size=300, window=20,
@@ -116,13 +115,9 @@ else:
     # load model
     model = word2vec.Word2Vec.load('model.bin')
 
-print(model.corpus_count)
-print(model.wv['after'].shape, model.wv['after'][:10])
-
 embeddings_index = {}
 #print(model.wv.vocab)
 for word in tqdm(model.wv.vocab):
-    print(word)
     embeddings_index[word] = model[word]
 
 # create sentence vectors using the above function for training and validation set
