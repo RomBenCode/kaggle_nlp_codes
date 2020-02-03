@@ -95,8 +95,11 @@ def sent2vec(s):
     return v / np.sqrt((v ** 2).sum())
 
 
-# Create a SentimentIntensityAnalyzer object.
-sid_obj = SentimentIntensityAnalyzer()
+try:
+    sid_obj = SentimentIntensityAnalyzer()
+except:
+    nltk.download('vader_lexicon')
+    sid_obj = SentimentIntensityAnalyzer()
 # pour ne pas avoir a recalculer le modele de word embedding a chaque fois
 flag_save_word2vec = False
 # on recupere les donnees

@@ -1,0 +1,13 @@
+matplotlib
+pandas
+numpy
+nltk
+tensorflow
+keras
+gensim
+sklearn
+tqdm
+jupyter
+jupytext
+pytest
+pytest-env
