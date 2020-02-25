@@ -30,11 +30,10 @@ def train_embedding_only_model():
         embedding_matrix = pickle.load(f)
 
     targets = pd.read_csv(files.TRAIN_DATA, usecols=[c.Tweet.TARGET])
-
     # create a simple 3 layer sequential neural net
     model = Sequential()
     model.add(
-        Embedding(embedding_matrix.shape()[0], m.EMBEDDING_DIM, weights=[embedding_matrix],
+        Embedding(embedding_matrix.shape[0], m.EMBEDDING_DIM, weights=[embedding_matrix],
                   input_length=m.SENT_INPUT_LENGTH, trainable=False))
     # TODO: model inputs as variables
     model.add(Bidirectional(LSTM(200, dropout=0.5, recurrent_dropout=0.5)))
@@ -52,9 +51,10 @@ def train_embedding_only_model():
 
     history = model.fit(xtrain_pad, targets, batch_size=512, epochs=100, validation_split=0.8, callbacks=[checkpoint_cb])
 
-    predict_test = model.predict(xtest_pad)
+    predict_test = model.predict(xtest_pad).squeeze()
 
     test_ids = pd.read_csv(files.TEST_DATA, usecols=[c.Tweet.ID])
+
     data_frame_predict = pd.DataFrame({c.Tweet.ID: test_ids[c.Tweet.ID], c.Tweet.TARGET: predict_test})
 
     data_frame_predict.to_csv(path_or_buf="submission_test_V1.csv", index=False)

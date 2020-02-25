@@ -1,4 +1,4 @@
-class Tweet()
+class Tweet():
     ID = "id"
 
     KEYWORD = "keyword"
